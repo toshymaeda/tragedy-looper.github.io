@@ -35,7 +35,7 @@
             "id": "deepOne",
             "name": "Deep One",
             "max": 1,
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "abilities": [
                 {
                     "type": "Optional",
@@ -91,7 +91,7 @@
         {
             "id": "faceless",
             "name": "Faceless",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "tags": [
                 "immortal"
             ],
@@ -117,7 +117,7 @@
         {
             "id": "vampire",
             "name": "Vampire",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "tags": [
                 "immortal"
             ],
@@ -142,7 +142,7 @@
         {
             "id": "werewolf",
             "name": "Werewolf",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "abilities": [
                 {
                     "type": "Optional Loss condition: Protagonists Death",
@@ -163,7 +163,7 @@
         {
             "id": "nightmare",
             "name": "Nightmare",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "tags": [
                 "immortal"
             ],
@@ -220,7 +220,7 @@
                         "Goodwill ablility step"
                     ],
                     "prerequisite": "This charcter has more then 2 :paranoia:",
-                    "description": "This Character gains Mandatory :goodwill: Refusel."
+                    "description": "This Character gains Mandatory :goodwill: Refusal."
                 }
             ]
         },

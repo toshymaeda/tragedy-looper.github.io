@@ -109,7 +109,7 @@
                 {
                     "type": "active",
                     "goodwillRank": 3,
-                    "immuneToGoodwillRefusel": true,
+                    "immuneToGoodwillRefusal": true,
                     "description": "Reveal own role."
                 }
             ]
@@ -423,8 +423,8 @@
                 {
                     "type": "active",
                     "goodwillRank": 2,
-                    "immuneToGoodwillRefusel": true,
-                    "description": "-1 :paranoia: on panicked character in same location. This ability cannot be refused by :goodwill: Refusel."
+                    "immuneToGoodwillRefusal": true,
+                    "description": "-1 :paranoia: on panicked character in same location. This ability cannot be refused by :goodwill: Refusal."
                 }
             ]
         },

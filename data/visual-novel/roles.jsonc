@@ -19,7 +19,7 @@
         {
             "id": "creature",
             "name": "Creature",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "abilities": [
                 {
                     "type": "Optional",
@@ -41,7 +41,7 @@
         {
             "id": "possessed",
             "name": "Possessed",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "abilities": [
                 {
                     "type": "Mandatory",
@@ -133,7 +133,7 @@
         {
             "id": "lunatic",
             "name": "Lunatic",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "abilities": [
                 {
                     "type": "Mandatory",

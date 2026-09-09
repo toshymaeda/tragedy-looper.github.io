@@ -35,7 +35,7 @@
                   ]}
                 />
               </span>
-              {#if ability.immuneToGoodwillRefusel}
+              {#if ability.immuneToGoodwillRefusal}
                 <span class="badge"
                   ><Translation translationKey="Immune to Goodwill Refusal" /></span
                 >

@@ -581,7 +581,7 @@ function generateRolesSchema({ tags }: Names) {
                     "properties": {
                         "id": { "type": "string" },
                         "name": { "type": "string" },
-                        "goodwillRefusel": { "type": "string", "enum": ['Optional', 'Mandatory', 'Puppeted'] },
+                        "goodwillRefusal": { "type": "string", "enum": ['Optional', 'Mandatory', 'Puppeted'] },
                         "goodwillOutburst": { "type": "boolean" },
                         "tags": {
                             "type": "array",
@@ -658,7 +658,7 @@ function generateCharactersSchema({ keywords }: Names) {
                                         properties: {
                                             "type": { "type": "string", enum: ["active"] },
                                             "goodwillRank": { "type": "number" },
-                                            "immuneToGoodwillRefusel": { "type": "boolean" },
+                                            "immuneToGoodwillRefusal": { "type": "boolean" },
                                             "timesPerLoop": { "type": "number" },
                                             "restrictedToLocation": {
                                                 type: "array",

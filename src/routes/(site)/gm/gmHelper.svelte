@@ -514,7 +514,7 @@
         </tr>
       {/each}
     {/if}
-    {#if scriptRoles.filter((x) => x['goodwillRefusel'] !== undefined).length + showAll(abilities).filter( (x) => includes(x['timing'], 'Goodwill ablility step') ).length > 0}
+    {#if scriptRoles.filter((x) => x['goodwillRefusal'] !== undefined).length + showAll(abilities).filter( (x) => includes(x['timing'], 'Goodwill ablility step') ).length > 0}
       <tr>
         <td colspan="7"><Translation translationKey={'Abilities Protagonists'} /></td>
       </tr>
@@ -556,11 +556,11 @@
         </tr>
       {/each}
       {#each scriptRoles
-        .filter((x) => x['goodwillRefusel'] !== undefined)
-        .sort( (a, b) => sortabilities({ type: a.goodwillRefusel ?? 'Optional' }, { type: b.goodwillRefusel ?? 'Optional' }) ) as map}
+        .filter((x) => x['goodwillRefusal'] !== undefined)
+        .sort( (a, b) => sortabilities({ type: a.goodwillRefusal ?? 'Optional' }, { type: b.goodwillRefusal ?? 'Optional' }) ) as map}
         <tr>
           <td>
-            <Translation translationKey={map.goodwillRefusel} />
+            <Translation translationKey={map.goodwillRefusal} />
           </td>
           <td>
             {#if map.character}

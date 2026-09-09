@@ -25,7 +25,7 @@ export type timing = typeof TimingType[number];
 //     Immortal?: true,
 //     afterDeath?: true,
 //     goodwillOutburst?: true,
-//     goodwillRefusel?: 'Optional' | 'Mandatory'|'Puppeted',
+//     goodwillRefusal?: 'Optional' | 'Mandatory'|'Puppeted',
 //     abilities: readonly Abilitie<{ 'Over all Roles'?: true }>[]
 // } & ScriptSpecified & DoseNotTriggerIncident;
 

@@ -73,7 +73,7 @@
                 "immortal"
             ],
             "max": 1,
-            "goodwillRefusel": "Mandatory",
+            "goodwillRefusal": "Mandatory",
             "abilities": [
                 {
                     "type": "Mandatory",

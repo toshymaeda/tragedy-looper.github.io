@@ -29,12 +29,12 @@
                     ]
                 }
             ],
-            "goodwillRefusel": "Mandatory"
+            "goodwillRefusal": "Mandatory"
         },
         {
             "id": "cultMember",
             "name": "Cult Member",
-            "goodwillRefusel": "Mandatory",
+            "goodwillRefusal": "Mandatory",
             "abilities": [
                 {
                     "timing": [
@@ -48,7 +48,7 @@
         {
             "id": "madGenius",
             "name": "Mad Genius",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "max": 1,
             "abilities": [
                 {
@@ -64,7 +64,7 @@
         {
             "id": "potentate",
             "name": "Potentate",
-            "goodwillRefusel": "Mandatory",
+            "goodwillRefusal": "Mandatory",
             "max": 1,
             "tags": [
                 "supernaturalTag"
@@ -82,7 +82,7 @@
         {
             "id": "seeder",
             "name": "Seeder",
-            "goodwillRefusel": "Mandatory",
+            "goodwillRefusal": "Mandatory",
             "max": 1,
             "tags": [
                 "supernaturalTag"

@@ -418,7 +418,7 @@ MTS 한국어판은 스트레치 골 달성으로 대부분의 확장이 포함�
 | `On character death` | 캐릭터 사망 시 | 대소문자만 다른 쌍이므로 On Character Death와 같은 후보를 사용(능력 타이밍 enum). | 커뮤니티 통용(나무위키 https://namu.wiki/w/트래지디%20루퍼) |
 | `Faked` | 위장 | 저장소 용어집에 Fake Incident=위장 사건, Faked Suicide=위장 자살이 정발 확정으로 기록되어 있어 사건 배지 Faked는 '위장'으로 직결됨. | 저장소 translations/ko.GLOSSARY.md §2.5 (정발 확정 항목) |
 | `Turf` | 영역 | ja テリトリー(거물/Boss의 각본 지정 장소)에 해당하며 나무위키가 '거물의 영역'·'보스의 영역'으로 표기하고, MTS가 가타카나 역할명도 의역한 경향과 부합. | 커뮤니티 통용(나무위키 https://namu.wiki/w/트래지디%20루퍼) |
-| `Goodwill Refusel` | 우호 무시 | ja 원문 友好無視의 직역이며 나무위키 트래지디 루퍼 문서에서 '우호 무시'/'우호 절대 무시' 표기가 실제로 통용됨을 확인했다. | https://namu.wiki/w/%ED%8A%B8%EB%9E%98%EC%A7%80%EB%94%94%20%EB%A3%A8%ED%8D%BC |
+| `Goodwill Refusal` | 우호 무시 | ja 원문 友好無視의 직역이며 나무위키 트래지디 루퍼 문서에서 '우호 무시'/'우호 절대 무시' 표기가 실제로 통용됨을 확인했다. | https://namu.wiki/w/%ED%8A%B8%EB%9E%98%EC%A7%80%EB%94%94%20%EB%A3%A8%ED%8D%BC |
 
 **확신도 중** (33개)
 
@@ -509,7 +509,7 @@ MTS 한국어판은 스트레치 골 달성으로 대부분의 확장이 포함�
 | `difficulty` | 난이도 |  |
 | `Characters` | 캐릭터 |  |
 | `Extra Rules` | 추가 규칙 |  |
-| `Goodwill Refusel` | 우호 무시 |  |
+| `Goodwill Refusal` | 우호 무시 |  |
 | `Incidents` | 사건 |  |
 | `Last Day` | 마지막 날 |  |
 | `Loop Start` | 루프 시작 |  |

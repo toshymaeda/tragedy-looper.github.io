@@ -6,7 +6,7 @@
         {
             "id": "nightmareHaunted",
             "name": "Nightmare (Haunted Stage)",
-            "goodwillRefusel": "Mandatory",
+            "goodwillRefusal": "Mandatory",
             "abilities": [
                 {
                     "type": "Mandatory",
@@ -59,7 +59,7 @@
         {
             "id": "werewolfHaunted",
             "name": "Werewolf (Haunted Stage)",
-            "goodwillRefusel": "Mandatory",
+            "goodwillRefusal": "Mandatory",
             "abilities": [
                 {
                     "type": "Optional Loss condition: Protagonists Death",
@@ -128,7 +128,7 @@
         {
             "id": "spellcaster",
             "name": "Spellcaster",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "abilities": [
                 {
                     "type": "Optional",
@@ -145,7 +145,7 @@
             "tags": [
                 "afterdeath"
             ],
-            "goodwillRefusel": "Mandatory",
+            "goodwillRefusal": "Mandatory",
             "abilities": [
                 {
                     "type": "Mandatory",
@@ -166,7 +166,7 @@
             "id": "poltergeist",
             "name": "Poltergeist",
             "max": 1,
-            "goodwillRefusel": "Mandatory",
+            "goodwillRefusal": "Mandatory",
             "abilities": [
                 {
                     "type": "Optional",

@@ -6,7 +6,7 @@
         {
             "id": "marionetteAHR",
             "name": "Marionette",
-            "goodwillRefusel": "Puppeted",
+            "goodwillRefusal": "Puppeted",
             "abilities": [
                 {
                     "type": "Mandatory",
@@ -21,7 +21,7 @@
         {
             "id": "lullaby",
             "name": "Lullaby",
-            "goodwillRefusel": "Puppeted",
+            "goodwillRefusal": "Puppeted",
             "abilities": [
                 {
                     "type": "Mandatory",
@@ -142,7 +142,7 @@
         {
             "id": "piedPiper",
             "name": "Pied Piper",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "abilities": [
                 {
                     "type": "Mandatory",

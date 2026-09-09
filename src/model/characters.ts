@@ -25,7 +25,7 @@ export type Ability = {
     type: 'active'
     goodwillRank: number,
     timesPerLoop?: number,
-    immuneToGoodwillRefusel?: true,
+    immuneToGoodwillRefusal?: true,
     restrictedToLocation?: readonly LocationName[],
     description: string
 

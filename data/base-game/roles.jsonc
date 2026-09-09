@@ -25,13 +25,13 @@
         {
             "id": "curmudgeon",
             "name": "Curmudgeon",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "abilities": []
         },
         {
             "id": "killer",
             "name": "Killer",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "abilities": [
                 {
                     "type": "Optional",
@@ -53,7 +53,7 @@
         {
             "id": "brain",
             "name": "Brain",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "abilities": [
                 {
                     "type": "Optional",
@@ -67,7 +67,7 @@
         {
             "id": "cultist",
             "name": "Cultist",
-            "goodwillRefusel": "Mandatory",
+            "goodwillRefusal": "Mandatory",
             "abilities": [
                 {
                     "type": "Optional",
@@ -106,7 +106,7 @@
         {
             "id": "witch",
             "name": "Witch",
-            "goodwillRefusel": "Mandatory",
+            "goodwillRefusal": "Mandatory",
             "abilities": []
         },
         {
@@ -198,7 +198,7 @@
         {
             "id": "factor",
             "name": "Factor",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "abilities": [
                 {
                     "type": "Mandatory",

@@ -6,7 +6,7 @@
         {
             "id": "poisoner",
             "name": "Poisoner",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "abilities": [
                 {
                     "type": "Mandatory",
@@ -71,7 +71,7 @@
         {
             "id": "paranoiac",
             "name": "Paranoiac",
-            "goodwillRefusel": "Mandatory",
+            "goodwillRefusal": "Mandatory",
             "abilities": [
                 {
                     "type": "Optional",
@@ -102,7 +102,7 @@
         {
             "id": "obstinate",
             "name": "Obstinate",
-            "goodwillRefusel": "Mandatory",
+            "goodwillRefusal": "Mandatory",
             "abilities": [
                 {
                     "type": "Script creation",
@@ -160,7 +160,7 @@
         {
             "id": "ninja",
             "name": "Ninja",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "abilities": [
                 {
                     "type": "Optional",

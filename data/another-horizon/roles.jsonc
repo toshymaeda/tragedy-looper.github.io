@@ -26,7 +26,7 @@
         {
             "id": "invader",
             "name": "Invader",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "abilities": [
                 {
                     "type": "Optional",
@@ -40,7 +40,7 @@
         {
             "id": "twilight",
             "name": "Twilight",
-            "goodwillRefusel": "Optional",
+            "goodwillRefusal": "Optional",
             "goodwillOutburst": true,
             "tags": [
                 "immortal"
@@ -58,7 +58,7 @@
         {
             "id": "hider",
             "name": "Hider",
-            "goodwillRefusel": "Mandatory",
+            "goodwillRefusal": "Mandatory",
             "scriptSpecified": [
                 {
                     "name": "world",
@@ -134,7 +134,7 @@
         {
             "id": "neurotic",
             "name": "Neurotic",
-            "goodwillRefusel": "Mandatory",
+            "goodwillRefusal": "Mandatory",
             "abilities": [
                 {
                     "type": "Mandatory",
@@ -191,7 +191,7 @@
         {
             "id": "shadow",
             "name": "Shadow",
-            "goodwillRefusel": "Mandatory",
+            "goodwillRefusal": "Mandatory",
             "abilities": [
                 {
                     "type": "Delayed Loss condition: Protagonists Death",

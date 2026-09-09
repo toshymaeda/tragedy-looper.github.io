@@ -35,7 +35,7 @@
           description: string;
           goodwillRank: number;
           timesPerLoop: number;
-          immuneToGoodwillRefusel: boolean;
+          immuneToGoodwillRefusal: boolean;
           restrictedToLocation: readonly string[];
         }
     )[];
@@ -102,9 +102,9 @@
               'timesPerLoop' in ability && ability.timesPerLoop != undefined
                 ? ability.timesPerLoop
                 : 0,
-            immuneToGoodwillRefusel:
-              'immuneToGoodwillRefusel' in ability && ability.immuneToGoodwillRefusel !== undefined
-                ? ability.immuneToGoodwillRefusel
+            immuneToGoodwillRefusal:
+              'immuneToGoodwillRefusal' in ability && ability.immuneToGoodwillRefusal !== undefined
+                ? ability.immuneToGoodwillRefusal
                 : false,
             restrictedToLocation:
               'restrictedToLocation' in ability && ability.restrictedToLocation
@@ -283,40 +283,75 @@
               </div>
             {/if}
             <img
-              src="{base}/cards/general/{actualCard.gender}.png"
+              src="{base}/cards/general/diverse.png"
               alt="Cardbackground"
               class="back"
             />
 
-            {#each locations.filter((x) => x !== 'The Far Side') as location}
-              {#if actualCard.startLocation == undefined}
-                <!-- If no start location is defined, show all no icons -->
-              {:else if actualCard.startLocation.includes(location)}
+            <div class="location-background-grid">
+              {#each Array.from({ length: 4 }) as _, idx}
                 <img
-                  src="{base}/cards/general/location-{location.toLocaleLowerCase()}-start.png"
-                  alt={$getString(location)}
-                  class="location back"
+                  src="{base}/cards/general/location-background.png"
+                  alt=""
+                  class="location-background-tile"
                 />
+              {/each}
+            </div>
+
+            {#each locations.filter((x) => x !== 'The Far Side') as location}
+              {#if actualCard.startLocation?.includes(location)}
+                {#if location === 'Hospital'}
+                  <img
+                    src="{base}/cards/general/hospital-icon.svg"
+                    alt={$getString('Hospital')}
+                    class="location-background-icon icon-hospital"
+                  />
+                {/if}
+                {#if location === 'Shrine'}
+                  <img
+                    src="{base}/cards/general/shrine-icon.svg"
+                    alt={$getString('Shrine')}
+                    class="location-background-icon icon-shrine"
+                  />
+                {/if}
+                {#if location === 'City'}
+                  <img
+                    src="{base}/cards/general/city-icon.svg"
+                    alt={$getString('City')}
+                    class="location-background-icon icon-city"
+                  />
+                {/if}
+                {#if location === 'School'}
+                  <img
+                    src="{base}/cards/general/school-icon.svg"
+                    alt={$getString('School')}
+                    class="location-background-icon icon-school"
+                  />
+                {/if}
               {:else if actualCard.forbiddenLocation.includes(location)}
                 <img
-                  src="{base}/cards/general/location-{location.toLocaleLowerCase()}-forbidden.png"
-                  alt={$getString(location)}
-                  class="location back"
-                />
-              {:else}
-                <img
-                  src="{base}/cards/general/location-{location.toLocaleLowerCase()}-blank.png"
-                  alt={$getString(location)}
-                  class="location back"
+                  src="{base}/icons/custom/scar.png"
+                  alt=""
+                  class="location-background-forbidden forbidden-{location.toLocaleLowerCase()}"
                 />
               {/if}
             {/each}
+
+            
             {#if actualCard.paranoiaLimit !== undefined}
-              <img
-                src="{base}/cards/general/paranoia-{actualCard.paranoiaLimit}.png"
-                alt={$getString('paranoia')}
-                class="paranoia back"
-              />
+              <ul class="paranoia">
+                {#each Array.from({ length: actualCard.paranoiaLimit }) as _, i}
+                  <li>
+                    <img src="{base}/icons/custom/paranoia2_custom.png" alt="paranoia icon" />
+                  </li>
+                {/each}
+              </ul>
+              <div class="paranoia-limit-bar">
+                <span>paranoia limit</span>
+              </div>
+              <div class="paranoia-limit-number">
+                <span>{actualCard.paranoiaLimit}</span>
+              </div>
             {/if}
 
             <h2><Translation translationKey={actualCard.name} /></h2>
@@ -325,20 +360,24 @@
               {#each actualCard.abilities as ability}
                 <li class={ability.type}>
                   {#if ability.type == 'active'}
-                    <ul class="perLoop">
-                      {#each Array.from({ length: ability.timesPerLoop }) as _, i}
-                        <li>
-                          <img src="{base}/cards/general/loop.png" alt="loop icon" />
-                        </li>
-                      {/each}
-                    </ul>
-                    <ul class="goodwillRank">
-                      {#each Array.from({ length: ability.goodwillRank }) as _, i}
-                        <li>
-                          <img src="{base}/cards/general/goodwill.png" alt="goodwill icon" />
-                        </li>
-                      {/each}
-                    </ul>
+                    <div class="ability-icons">
+                      {#if ability.timesPerLoop > 0}
+                        <ul class="perLoop">
+                          <li>
+                            <span class="perLoopText">
+                              {ability.timesPerLoop} × <span class="perLoopInfinity">∞</span>
+                            </span>
+                          </li>
+                        </ul>
+                      {/if}
+                      <ul class="goodwillRank">
+                        {#each Array.from({ length: ability.goodwillRank }) as _, i}
+                          <li>
+                            <img src="{base}/cards/general/goodwill_custom.png" alt="goodwill icon" />
+                          </li>
+                        {/each}
+                      </ul>
+                    </div>
                   {/if}
                   <div class="ability">
                     {#if ability.restrictedToLocation.length > 0}
@@ -358,14 +397,14 @@
             <ul class="tags">
               {#each actualCard.tags as tag}
                 <li>
-                  <Iron />
+                  <!-- <Iron /> -->
                   <div>
                     <Translation
                       translationKey={data.keywordsLookup[tag as keyof typeof data.keywordsLookup]
                         .name}
                     />
                   </div>
-                  <Iron />
+                  <!-- <Iron /> -->
                 </li>
               {/each}
             </ul>
@@ -381,6 +420,8 @@
 {/if}
 
 <style lang="scss">
+  @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap');
+
   .top {
     height: calc(8.8cm * var(--scale, 1));
     width: calc(6.3cm * var(--scale, 1));
@@ -391,7 +432,7 @@
     height: calc(8.8cm * var(--scale, 1));
     width: calc(6.3cm * var(--scale, 1));
     position: relative;
-    border: calc(1px * var(--scale)) solid #ccc;
+    border: calc(3px * var(--scale)) solid #000000;
     border-radius: calc(0.2cm * var(--scale));
     background-color: #000;
     font-family: 'Noto Sans';
@@ -483,6 +524,101 @@
       width: calc(6.3cm * var(--scale, 1));
       position: absolute;
     }
+    .location {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: calc(6.3cm * var(--scale, 1));
+      height: calc(8.8cm * var(--scale, 1));
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      overflow: hidden;
+      max-width: none;
+      max-height: none;
+    }
+    .location-background-grid {
+      position: absolute;
+      top: calc(0.2cm * var(--scale));
+      right: calc(0.2cm * var(--scale));
+      width: calc(56px * var(--scale));
+      height: calc(56px * var(--scale));
+      display: grid;
+      grid-template-columns: repeat(2, calc(28px * var(--scale)));
+      grid-template-rows: repeat(2, calc(28px * var(--scale)));
+      gap: 1px;
+      z-index: 2;
+      align-content: start;
+      justify-content: end;
+    }
+    .location-background-tile {
+      width: calc(28px * var(--scale));
+      height: calc(28px * var(--scale));
+      object-fit: cover;
+      display: block;
+      padding: 0;
+      margin: 0;
+    }
+    .location-background-icon {
+      position: absolute;
+      top: calc(0.2cm * var(--scale));
+      right: calc(0.2cm * var(--scale));
+      width: calc(22px * var(--scale));
+      height: calc(22px * var(--scale));
+      object-fit: contain;
+      display: block;
+      padding: 0;
+      margin: 0;
+      z-index: 4;
+      filter: grayscale(1) brightness(1.8) invert(1);
+    }
+    .location-background-forbidden {
+      position: absolute;
+      width: calc(24px * var(--scale));
+      height: calc(24px * var(--scale));
+      display: block;
+      padding: 0;
+      margin: 0;
+      z-index: 5;
+      object-fit: contain;
+      object-position: center;
+      filter: drop-shadow(0 0 calc(2px * var(--scale)) rgba(0, 0, 0, 0.95))
+        drop-shadow(0 0 calc(3px * var(--scale)) rgba(255, 45, 45, 0.9));
+      background: transparent;
+      border: none;
+    }
+    .icon-hospital {
+      top: calc(0.26cm * var(--scale));
+      right: calc(0.26cm * var(--scale) + calc(28px * var(--scale)) + 1px);
+    }
+    .icon-shrine {
+      top: calc(0.26cm * var(--scale));
+      right: calc(0.26cm * var(--scale));
+    }
+    .icon-city {
+      top: calc(0.26cm * var(--scale) + calc(28px * var(--scale)) + 1px);
+      right: calc(0.26cm * var(--scale) + calc(28px * var(--scale)) + 1px);
+    }
+    .icon-school {
+      top: calc(0.26cm * var(--scale) + calc(28px * var(--scale)) + 1px);
+      right: calc(0.26cm * var(--scale));
+    }
+    .forbidden-hospital {
+      top: calc(0.26cm * var(--scale));
+      right: calc(0.26cm * var(--scale) + calc(28px * var(--scale)) + 1px);
+    }
+    .forbidden-shrine {
+      top: calc(0.26cm * var(--scale));
+      right: calc(0.26cm * var(--scale));
+    }
+    .forbidden-city {
+      top: calc(0.26cm * var(--scale) + calc(28px * var(--scale)) + 1px);
+      right: calc(0.26cm * var(--scale) + calc(28px * var(--scale)) + 1px);
+    }
+    .forbidden-school {
+      top: calc(0.26cm * var(--scale) + calc(28px * var(--scale)) + 1px);
+      right: calc(0.26cm * var(--scale));
+    }
     h2 {
       position: absolute;
       display: flex;
@@ -494,7 +630,8 @@
       align-items: center;
       justify-content: center;
       color: #fff;
-      font-family: 'Times New Roman', serif;
+      font-family: 'Nanum Gothic', 'Times New Roman', serif;
+      letter-spacing: calc(0.03em * var(--scale));
 
       margin: 0;
       writing-mode: vertical-lr;
@@ -517,30 +654,25 @@
       flex-direction: column;
       margin: 0;
       bottom: calc(0.3cm * var(--scale));
-      right: calc(0.25cm * var(--scale));
-      left: calc(1.1cm * var(--scale));
+      right: calc(0.15cm * var(--scale));
+      left: calc(1cm * var(--scale));
       color: white;
+      gap: 2px;
       & > li {
-        margin-bottom: calc(-0.4cm * var(--scale));
-      }
-      & > li.active,
-      & > li:last-child,
-      & > li:has(+ .active) {
-        margin-bottom: calc(-0.6cm * var(--scale));
+        margin-bottom: 0;
       }
       div.ability {
-        //metalic border
-        // border: 1px solid #ccc;
-        border-image: linear-gradient(to bottom, #ccc 60%, #0000 100%) 1;
-        border-width: calc(1pt * var(--scale));
-        border-style: solid;
-
+        border-top: calc(0.25pt * var(--scale)) solid rgba(245, 235, 255, 0.42);
+        border-left: none;
+        border-right: none;
         border-bottom: none;
+        box-shadow: inset 0 calc(1px * var(--scale)) calc(3px * var(--scale)) rgba(255,255,255,0.08);
 
-        padding: calc(2pt * var(--scale)) calc(4pt * var(--scale));
-        padding-bottom: calc(0.6cm * var(--scale));
+        padding: calc(0.12cm * var(--scale)) calc(4pt * var(--scale)) 0;
         background: linear-gradient(to bottom, #0000005e 80%, #0000 100%);
         color: #fff;
+        font-family: 'Nanum Gothic', 'Times New Roman', serif;
+        font-weight: 500;
         text-shadow:
           0 0 1px #000,
           0 0 2px #000,
@@ -554,33 +686,151 @@
         font-size: calc(8pt * var(--scale));
       }
     }
+    .ability-icons {
+      position: relative;
+      z-index: 3;
+      // margin-bottom: calc(-0.35cm * var(--scale));
+      // min-height: calc(0.8cm * var(--scale));
+      padding-bottom: 10px;
+    }
     .goodwillRank {
       display: flex;
       gap: 0cm;
-      margin-bottom: calc(-0.3cm * var(--scale));
-      margin-left: calc(0.55cm * var(--scale));
+      margin-bottom: calc(-0.35cm * var(--scale));
+      margin-left: calc(0cm * var(--scale));
       li {
         list-style: none;
-
-        margin-left: calc(-0.45cm * var(--scale));
+        margin-left: calc(0.05cm * var(--scale));
+        width: 14px;
       }
       img {
-        width: calc(0.8cm * var(--scale));
+        width: calc(0.75cm * var(--scale));
       }
     }
     .perLoop {
       float: right;
       display: flex;
       gap: calc(0cm * var(--scale));
-      margin-right: calc(0.2cm * var(--scale));
-      margin-bottom: calc(-0.2cm * var(--scale));
+      margin-right: calc(0.05cm * var(--scale));
+      margin-bottom: calc(-0.35cm * var(--scale));
       li {
         list-style: none;
-
         margin-left: calc(-0.25cm * var(--scale));
       }
+      .perLoopText {
+        color: #fdfdfd;
+        font-family: 'Nanum Gothic', 'Times New Roman', serif;
+        font-weight: 400;
+        font-size: calc(10pt * var(--scale));
+        letter-spacing: calc(0.01em * var(--scale));
+        text-shadow:
+          0 0 1px #000,
+          0 0 2px rgba(0, 0, 0, 0.8);
+      }
+      .perLoopInfinity {
+        font-size: calc(11pt * var(--scale));
+        line-height: 1;
+        vertical-align: baseline;
+        display: inline-block;
+      }
+    }
+    .paranoia {
+      position: absolute;
+      display: flex;
+      top: calc(0.18cm * var(--scale));
+      left: calc(0.6cm * var(--scale));
+      width: auto;
+      height: auto;
+      gap: calc(0.04cm * var(--scale));
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      z-index: 2;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       img {
-        width: calc(0.55cm * var(--scale));
+        width: 15px;
+        height: 15px;
+        object-fit: contain;
+        filter: drop-shadow(0 0 calc(2px * var(--scale)) rgba(0, 0, 0, 0.32));
+      }
+    }
+    .paranoia-limit-bar {
+      position: absolute;
+      top: calc(0.62cm * var(--scale) + 2px);
+      left: 0;
+      width: 90px;
+      height: calc(0.25cm * var(--scale));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.8);
+      border-top-right-radius: calc(0.12cm * var(--scale));
+      border-bottom-right-radius: calc(0.12cm * var(--scale));
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      box-shadow:
+        inset 0 0 calc(1px * var(--scale)) rgba(255, 255, 255, 0.08),
+        0 0 calc(5px * var(--scale)) rgba(0, 0, 0, 0.45);
+      z-index: 2;
+      margin-top: calc(2px * var(--scale));
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        background: transparent;
+        box-shadow: 0 0 calc(6px * var(--scale)) rgba(255,255,255,0.18), 0 0 calc(10px * var(--scale)) rgba(0,0,0,0.7);
+        filter: blur(calc(2px * var(--scale)));
+        pointer-events: none;
+      }
+
+      span {
+        color: rgba(242, 231, 202, 0.9);
+        font-size: calc(6pt * var(--scale));
+        line-height: 1;
+        font-weight: 400;
+        letter-spacing: calc(0.015em * var(--scale));
+        text-transform: lowercase;
+        font-family: 'Times New Roman', Times, serif;
+      }
+    }
+    .paranoia-limit-number {
+      position: absolute;
+      top: calc(0.25cm * var(--scale));
+      left: calc(0.15cm * var(--scale));
+      height: calc(0.20cm * var(--scale));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgb(117 12 166);
+      background: transparent;
+      font-family: 'Lucida Handwriting', 'Brush Script MT', 'URW Chancery L', cursive;
+      font-size: calc(18pt * var(--scale));
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1;
+      z-index: 3;
+      margin-right: calc(0.20cm * var(--scale));
+      text-shadow:
+        0 0 calc(2px * var(--scale)) rgba(165, 12, 124, 0.95),
+        0 0 calc(5px * var(--scale)) rgba(205, 180, 255, 0.95),
+        0 0 calc(7px * var(--scale)) rgba(205, 180, 255, 0.95),
+        0 0 calc(10px * var(--scale)) rgba(165, 12, 124, 1);
+      filter: drop-shadow(0 0 calc(2px * var(--scale)) rgba(201, 175, 255, 0.8));
+      box-shadow: none;
+
+      span {
+        display: block;
       }
     }
     .tags {
@@ -589,43 +839,56 @@
       position: absolute;
       display: flex;
       flex-direction: column;
+      align-items: flex-end;
+      gap: calc(0.08cm * var(--scale));
       top: calc(1.75cm * var(--scale));
-      right: calc(0.15cm * var(--scale));
+      right: calc(0.05cm * var(--scale));
       height: calc(6cm * var(--scale));
       font-size: calc(9pt * var(--scale));
-      align-items: center;
-      justify-content: top;
-      font-family: 'Times New Roman', Times, serif;
+      font-family: 'Nanum Gothic', 'Times New Roman', serif;
 
       li {
-        display: inline-flex;
+        display: flex;
         align-items: center;
-        gap: 0;
-        margin: calc(-0.18cm * var(--scale)) 0;
-
-        :global(svg) {
-          // width: 1cm;
-          height: calc(1cm * var(--scale));
-          margin: 0 calc(-0.15cm * var(--scale));
-          filter: drop-shadow(
-            calc(1px * var(--scale)) calc(1px * var(--scale)) calc(2px * var(--scale)) #000
-          );
-        }
+        justify-content: flex-end;
+        width: 100%;
+        margin: 0;
 
         div {
-          display: inline-block;
-          padding: calc(0.01cm * var(--scale)) calc(0.2cm * var(--scale));
-          border-top: calc(0.02cm * var(--scale)) solid #152f32;
-          border-bottom: calc(0.02cm * var(--scale)) solid #152f32;
-          margin: 0 calc(0.03cm * var(--scale));
-          // font-family: 'UnifrakturCook', serif;
-          font-size: calc(8pt * var(--scale));
-          color: #ffe68c;
+          display: inline-flex;
+          align-items: center;
+          justify-content: flex-end;
+          box-sizing: border-box;
+          padding: calc(0.015cm * var(--scale)) calc(0.2cm * var(--scale));
+          border-top: calc(0.02cm * var(--scale)) solid rgba(32, 53, 49, 0.7);
+          border-bottom: calc(0.02cm * var(--scale)) solid rgba(32, 53, 49, 0.7);
+          border-left: calc(0.02cm * var(--scale)) solid rgba(32, 53, 49, 0.55);
+          border-right: calc(0.02cm * var(--scale)) solid rgba(32, 53, 49, 0.55);
+          border-radius: calc(0.18cm * var(--scale));
+          margin: 0;
+          font-size: calc(7pt * var(--scale));
+          color: rgba(236, 228, 190, 0.82);
+          letter-spacing: calc(0.02em * var(--scale));
           text-shadow:
-            0 0 calc(4px * var(--scale)) #fff9c4,
-            calc(1px * var(--scale)) calc(1px * var(--scale)) calc(2px * var(--scale)) #000;
-          background: linear-gradient(to right, #204850, #3b7a75, #204850);
-          box-shadow: 0 0 calc(10px * var(--scale)) rgba(0, 0, 0, 0.7);
+            0 0 calc(1px * var(--scale)) rgba(255, 244, 208, 0.12),
+            calc(1px * var(--scale)) calc(1px * var(--scale)) calc(2px * var(--scale)) rgba(0, 0, 0, 0.8);
+          background: linear-gradient(
+            to right,
+            rgba(31, 63, 60, 0.9),
+            rgba(56, 100, 94, 0.76),
+            rgba(31, 63, 60, 0.9)
+          );
+          box-shadow:
+            0 0 calc(8px * var(--scale)) rgba(0, 0, 0, 0.15),
+            inset 0 0 calc(2px * var(--scale)) rgba(255, 255, 255, 0.06),
+            inset 0 0 calc(12px * var(--scale)) rgba(179, 214, 200, 0.04);
+          width: calc(66px * var(--scale));
+          max-width: calc(66px * var(--scale));
+          height: calc(0.34cm * var(--scale));
+          line-height: 1.1;
+          padding: calc(0.01cm * var(--scale)) calc(0.2cm * var(--scale));
+          text-align: end;
+          filter: blur(0.05px) drop-shadow(0 0 calc(1px * var(--scale)) rgba(195, 230, 207, 0.06));
         }
       }
     }

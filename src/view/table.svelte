@@ -606,12 +606,12 @@
 
     <div class="header vertical-header role" style="grid-area: goodwillrefusal-header;">
       <div style="height: min-content; min-height: 100%;">
-        <Translation translationKey={'Goodwill Refusel'} />
+        <Translation translationKey={'Goodwill Refusal'} />
       </div>
     </div>
     {#each r.filter((x) => !x.skip) as ri}
       <div class="vertical-header role" style="grid-area: goodwillrefusal-{cssesc(ri.id)};">
-        {#each [$getString(ri.goodwillRefusel ?? ''), ri.goodwillOutburst ? $getString('Goodwill Outburst') : '', ri.scriptSpecified?.some((x) => x.name == 'world') ? $getString('World Selection') : ''].filter((x) => x?.length > 0) as tag, i}
+        {#each [$getString(ri.goodwillRefusal ?? ''), ri.goodwillOutburst ? $getString('Goodwill Outburst') : '', ri.scriptSpecified?.some((x) => x.name == 'world') ? $getString('World Selection') : ''].filter((x) => x?.length > 0) as tag, i}
           {#if i > 0}
             <br />
           {/if}
@@ -704,10 +704,10 @@
           <Translation translationKey={['ERROR findnig role with id {id}', { id: ri.id }]} />
         {/if}
       </h1>
-      {#if ri.goodwillRefusel}
+      {#if ri.goodwillRefusal}
         <h2>
-          <Translation translationKey={'Goodwill Refusel'} /> : <Translation
-            translationKey={ri.goodwillRefusel}
+          <Translation translationKey={'Goodwill Refusal'} /> : <Translation
+            translationKey={ri.goodwillRefusal}
           />
         </h2>
       {/if}
