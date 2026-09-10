@@ -27,6 +27,7 @@
     editLocals: false,
     shortenUrlsWithZip: true,
     iconSet: 'zManText' as keyof typeof imageSets,
+    showEdition: true,
   };
 
   export let enableTranslationUi = $state(defaultSettings);

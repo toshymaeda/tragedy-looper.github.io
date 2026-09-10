@@ -128,7 +128,10 @@
     <details>
       <summary><Translation translationKey={'Alternate Card Names'} /></summary>
 
-      {#each Object.entries(translationOverirdes[$language as keyof typeof translationOverirdes] ?? {}) as [originalText, alternatives]}
+      {#each Object.entries(
+        (translationOverirdes[$language as keyof typeof translationOverirdes] ??
+          translationOverirdes['en'])
+      ) as [originalText, alternatives]}
         <AlternativeSelector lang={$language} key={originalText} {alternatives} />
       {/each}
     </details>

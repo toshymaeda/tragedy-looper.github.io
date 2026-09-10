@@ -108,7 +108,9 @@
 
   onMount(() => {
     console.log('Mounting layout');
-    navigationLanguage.set(navigator.language?.split('-')[0] ?? 'en');
+    const browserLang = navigator.language?.split('-')[0] ?? 'en';
+    const deployLanguages = getDeployedLanguage();
+    navigationLanguage.set(deployLanguages.includes(browserLang) ? browserLang : 'en');
   });
 </script>
 
@@ -214,6 +216,15 @@
           />
         </small></label
       >
+      <label>
+        <input type="checkbox" role="switch" bind:checked={enableTranslationUi.showEdition} />
+        <Translation translationKey={'Show Edition'} />
+        <small>
+          <Translation
+            translationKey={'Show or hide the edition metadata on the card front.'}
+          />
+        </small>
+      </label>
     </form>
     <footer>
       <button onclick={() => (showOptionsDialog = false)}>

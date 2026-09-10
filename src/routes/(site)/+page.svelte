@@ -150,7 +150,7 @@
       )}
     </p>
     <p>
-      {$getString('Feedback (in English) is appriciated on')}
+      {$getString('Feedback (in English) is appreciated on')}
       <a
         href="https://github.com/LokiMidgard/tragedy-looper-deduction-tool#readme"
         target="_blank"

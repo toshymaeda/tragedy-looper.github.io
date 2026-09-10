@@ -13,7 +13,7 @@
   </hgroup>
   <p>
     <Translation
-      translationKey={'Since this board will probably never be released in english, not to mention any other language. This is an atempt to have a localized version.'}
+      translationKey={'Since this board will probably never be released in English, not to mention any other language. This is an attempt to have a localized version.'}
     />
     <Translation translationKey={'Not everything is cleand up yet.'} />
   </p>

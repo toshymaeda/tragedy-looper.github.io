@@ -451,7 +451,7 @@
                 {
                     "type": "active",
                     "goodwillRank": 3,
-                    "description": "Dose not trigger incidents."
+                    "description": "Does not trigger incidents."
                 }
             ]
         }

@@ -51,7 +51,7 @@
                     "timing": [
                         "Loop End"
                     ],
-                    "prerequisite": ":worldConvergence: hasn‘t occured this loop."
+                    "prerequisite": ":worldConvergence: hasn’t occurred this loop."
                 },
                 {
                     "type": "Script creation",

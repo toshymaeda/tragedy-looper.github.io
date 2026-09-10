@@ -6,6 +6,7 @@
   import { Spring, spring } from 'svelte/motion';
   import { adjust, clamp, round } from '../../../misc';
   import { getString } from '../+layout.svelte';
+  import { enableTranslationUi } from '../../+layout.svelte';
   import type { PageServerData } from './$types';
   import './holo.css';
   import { getAvialableCharacterImages } from '../../+layout.svelte';
@@ -18,6 +19,7 @@
   type Card = {
     name: string;
     type: 'character';
+    edition?: string;
     startLocation: readonly (typeof locations)[number][] | undefined;
     forbiddenLocation: readonly (typeof locations)[number][];
     gender: 'male' | 'female' | 'both' | 'diverse';
@@ -394,6 +396,11 @@
                 </li>
               {/each}
             </ul>
+            {#if enableTranslationUi.showEdition && actualCard.edition}
+              <div class="card-edition">
+                <span class="edition-value">{actualCard.edition}</span>
+              </div>
+            {/if}
             <ul class="tags">
               {#each actualCard.tags as tag}
                 <li>
@@ -662,13 +669,18 @@
         margin-bottom: 0;
       }
       div.ability {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        align-content: flex-start;
         border-top: calc(0.25pt * var(--scale)) solid rgba(245, 235, 255, 0.42);
         border-left: none;
         border-right: none;
         border-bottom: none;
         box-shadow: inset 0 calc(1px * var(--scale)) calc(3px * var(--scale)) rgba(255,255,255,0.08);
 
-        padding: calc(0.12cm * var(--scale)) calc(4pt * var(--scale)) 0;
+        padding: calc(0.03cm * var(--scale)) calc(1pt * var(--scale)) 2px;
         background: linear-gradient(to bottom, #0000005e 80%, #0000 100%);
         color: #fff;
         font-family: 'Nanum Gothic', 'Times New Roman', serif;
@@ -683,8 +695,39 @@
           0 0 7px #000,
           0 0 8px #000;
         margin: 0;
-        font-size: calc(8pt * var(--scale));
+        font-size: calc(7.5pt * var(--scale));
       }
+    }
+    .card-edition {
+      position: absolute;
+      right: calc(0.2cm * var(--scale));
+      bottom: calc(0.04cm * var(--scale));
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: calc(0.08cm * var(--scale));
+      z-index: 6;
+      color: rgba(210, 184, 96, 0.95);
+      font-family: 'Nanum Gothic', 'Times New Roman', serif;
+      font-size: calc(4.5pt * var(--scale));
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: calc(0.015em * var(--scale));
+      text-transform: uppercase;
+      text-shadow:
+        0 0 1px #000,
+        0 0 2px #000,
+        0 0 3px #000,
+        0 0 4px #000;
+    }
+    .edition-value {
+      color: rgba(210, 184, 96, 0.95);
+      font-weight: 700;
+      font-size: inherit;
+      font-style: normal;
+      letter-spacing: calc(0.015em * var(--scale));
+      text-transform: uppercase;
+      opacity: 0.92;
     }
     .ability-icons {
       position: relative;
@@ -841,7 +884,7 @@
       flex-direction: column;
       align-items: flex-end;
       gap: calc(0.08cm * var(--scale));
-      top: calc(1.75cm * var(--scale));
+      top: calc(1.75cm * var(--scale) + 2px);
       right: calc(0.05cm * var(--scale));
       height: calc(6cm * var(--scale));
       font-size: calc(9pt * var(--scale));
@@ -867,16 +910,16 @@
           border-radius: calc(0.18cm * var(--scale));
           margin: 0;
           font-size: calc(7pt * var(--scale));
-          color: rgba(236, 228, 190, 0.82);
+          color: rgba(248, 240, 212, 0.94);
           letter-spacing: calc(0.02em * var(--scale));
           text-shadow:
-            0 0 calc(1px * var(--scale)) rgba(255, 244, 208, 0.12),
+            0 0 calc(1px * var(--scale)) rgba(255, 244, 208, 0.3),
             calc(1px * var(--scale)) calc(1px * var(--scale)) calc(2px * var(--scale)) rgba(0, 0, 0, 0.8);
           background: linear-gradient(
             to right,
-            rgba(31, 63, 60, 0.9),
-            rgba(56, 100, 94, 0.76),
-            rgba(31, 63, 60, 0.9)
+            rgba(31, 63, 60, 0.72),
+            rgba(56, 100, 94, 0.58),
+            rgba(31, 63, 60, 0.72)
           );
           box-shadow:
             0 0 calc(8px * var(--scale)) rgba(0, 0, 0, 0.15),

@@ -140,7 +140,7 @@
                     "timing": [
                         "Loop End"
                     ],
-                    "prerequisite": "˝:butterflyEffect:˝ has occured this loop."
+                    "prerequisite": "˝:butterflyEffect:˝ has occurred this loop."
                 }
             ]
         },
